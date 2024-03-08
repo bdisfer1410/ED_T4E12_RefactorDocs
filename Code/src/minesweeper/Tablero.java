@@ -12,7 +12,7 @@ import javafx.util.Pair;
 /**
  * Crea un tablero de buscaminas flexible y fácilmente manipulable
  */
-public class Board 
+public class Tablero 
 {
     private int numberOfMines;	
     private Cell cells[][];
@@ -30,7 +30,7 @@ public class Board
      * @param r El númeor de filas del tablero
      * @param c El númeor de columnas del tablero
      */
-    public Board(int numberOfMines, int r, int c)
+    public Tablero(int numberOfMines, int r, int c)
     {
         this.rows = r;
         this.cols = c;

@@ -31,7 +31,7 @@ public class Game implements MouseListener, ActionListener, WindowListener
     // "playing" indicates whether a game is running (true) or not (false).
     private boolean playing; 
 
-    private Board board;
+    private Tablero board;
 
     private UI gui;
     
@@ -166,7 +166,7 @@ public class Game implements MouseListener, ActionListener, WindowListener
         int r = 9;
         int c = 9;
                 
-        this.board = new Board(mines, r, c);        
+        this.board = new Tablero(mines, r, c);        
     }
     
 
