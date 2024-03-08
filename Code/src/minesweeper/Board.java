@@ -9,7 +9,9 @@ import java.sql.Statement;
 import javafx.util.Pair;
 
 
-
+/**
+ * Crea un tablero de buscaminas flexible y fácilmente manipulable
+ */
 public class Board 
 {
     private int numberOfMines;	
@@ -21,6 +23,13 @@ public class Board
         
     //---------------------------------------------//
     
+    /**
+     * Instancia el tablero con:
+     * 
+     * @param numberOfMines Número de minas que aparecerán
+     * @param r El númeor de filas del tablero
+     * @param c El númeor de columnas del tablero
+     */
     public Board(int numberOfMines, int r, int c)
     {
         this.rows = r;
@@ -42,6 +51,9 @@ public class Board
 
     //------------------------------------------------------------------//
     //STEP 1//
+    /**
+     * Genera las casillas del tablero
+     */
     public void createEmptyCells()
     {
         for (int x = 0; x < cols; x++)
@@ -55,6 +67,9 @@ public class Board
 
     //------------------------------------------------------------------//
     //STEP 2//
+    /**
+     * Coloca aleatoriamente las minas
+     */
     public void setMines()
     {
         int x,y;
@@ -82,6 +97,9 @@ public class Board
 
     //------------------------------------------------------------------//
     //STEP 3//
+    /**
+     * Analiza el tablero y define de las celdas vacías, su distancia con alguna mina
+     */
     public void setSurroundingMinesNumber()
     {	
         for(int x = 0 ; x < cols ; x++) 
@@ -100,6 +118,14 @@ public class Board
     //---------------------HELPER FUNCTIONS---------------------------//        
 
     //Calculates the number of surrounding mines ("neighbours")
+    /**
+     * Calcula el número de minas que están alrededor de una posición 
+     * 
+     * @param xCo La coordenada X
+     * @param yCo La coordenada Y
+     * 
+     * @return El número de minas alrededor
+     */
     public int calculateNeighbours(int xCo, int yCo)
     {
         int neighbours = 0;
@@ -123,6 +149,11 @@ public class Board
     //------------------------------------------------------------------//	
 
     //Simply makes a coordinate a valid one (i.e within the boundaries of the Board)
+    /**
+     * Recibe la coordenada X y la ajusta para que esté dentro del tablero
+     * @param i La coordenada X
+     * @return La coordenada X ajustada
+     */
     public int makeValidCoordinateX(int i)
     {
         if (i < 0)
@@ -134,6 +165,11 @@ public class Board
     }	
     
     //Simply makes a coordinate a valid one (i.e within the boundaries of the Board)
+    /**
+     * Recibe la coordenada Y y la ajusta para que esté dentro del tablero
+     * @param i La coordenada Y
+     * @return La coordenada Y ajustada
+     */
     public int makeValidCoordinateY(int i)
     {
         if (i < 0)
@@ -149,6 +185,10 @@ public class Board
     //-------------DATA BASE------------------------//
     
     // to check whether there is a save game or not
+    /**
+     * Revisa si hay un archivo de guardado
+     * @return Si existe un archivo de guardado
+     */
     public boolean checkSave()
     {
         Connection connection = null;
@@ -187,7 +227,10 @@ public class Board
     
     //--------------LOAD SAVED GAME-----------------//
     
-    
+    /**
+     * Carga un archivo de guardado
+     * @return Los datos de guardado
+     */
     public Pair loadSaveGame()
     {
         Connection connection = null;
@@ -248,6 +291,9 @@ public class Board
     
     
     //------------------------------------------------------------------------//
+    /**
+     * Borra el archivo de guardado
+     */
     public void deleteSavedGame()
     {
         Connection connection = null;
@@ -282,6 +328,12 @@ public class Board
     
            
     //--------------SAVE GAME IN DATABASE-----------//
+    /**
+     * Guarda el progreso de la partida en un archivo
+     * 
+     * @param timer El tiempo transcurrido
+     * @param mines Las minas descubiertas
+     */
     public void saveGame(int timer, int mines)
     {
         Connection connection = null;
@@ -338,32 +390,52 @@ public class Board
     
     //--------------------------------------------//
     //---------GETTERS AND SETTERS-------------//
+    /**
+     * Fija el número máximo de minas
+     * @param numberOfMines El número máximo de minas
+     */
     public void setNumberOfMines(int numberOfMines)
     {
         this.numberOfMines = numberOfMines;
     }
 
+    /**
+     * @return El número máximo de minas
+     */
     public int getNumberOfMines()
     {
         return numberOfMines;
     }
 
+    /**
+     * @return La matriz de celdas
+     */
     public Cell[][] getCells()
     {
         return cells;
     }
-    
+
+    /**
+     * @return El número de filas
+     */
     public int getRows()
     {
         return rows;
     }
     
+
+    /**
+     * @return El número de columnas
+     */
     public int getCols()
     {
         return cols;
     }
     //-----------------------------------------//
 
+    /**
+     * Deja todas las casillas del tablero vacías
+     */
     public void resetBoard()
     {
         for(int x = 0 ; x < cols ; x++) 
