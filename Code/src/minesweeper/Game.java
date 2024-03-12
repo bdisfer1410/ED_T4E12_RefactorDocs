@@ -27,6 +27,10 @@ import minesweeper.Score.Time;
 // This is the main controller class
 public class Game implements MouseListener, ActionListener, WindowListener
 {
+    private static int DEFAULT_MINES = 10;
+    private static int DEFAULT_ROWS = 9;
+    private static int DEFAULT_COLS = 9;
+
     public static String dbPath;
     // "playing" indicates whether a game is running (true) or not (false).
     private boolean playing; 
@@ -161,12 +165,11 @@ public class Game implements MouseListener, ActionListener, WindowListener
     public void createBoard()
     {
         // Create a new board        
-        int mines = 10;
-
-        int r = 9;
-        int c = 9;
-                
-        this.board = new Tablero(mines, r, c);        
+        this.board = new Tablero(
+            this.DEFAULT_MINES,
+            this.DEFAULT_ROWS,
+            this.DEFAULT_COLS
+        );        
     }
     
 
