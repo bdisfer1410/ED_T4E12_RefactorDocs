@@ -26,7 +26,7 @@ public class UI extends JFrame
     private boolean stopTimer;
     
     // Frame settings
-    private final String FRAME_TITLE = "Minesweeper ~ Developed by Haris Muneer";
+    private final String FRAME_TITLE = "Minesweeper ~ Desarrollado por Haris Muneer";
     
     private int FRAME_WIDTH = 520;
     private int FRAME_HEIGHT = 550;

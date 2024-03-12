@@ -54,7 +54,7 @@ public class Game implements MouseListener, ActionListener, WindowListener
         }
         catch (URISyntaxException ex) 
         {
-            System.out.println("Error loading database file.");
+            System.out.println("Error cargando el archivo de base de datos.");
         }
 
         dbPath =   "jdbc:ucanaccess://" + p;
@@ -88,7 +88,7 @@ public class Game implements MouseListener, ActionListener, WindowListener
         {
             ImageIcon question = new ImageIcon(getClass().getResource("/resources/question.png"));      
 
-            int option = JOptionPane.showOptionDialog(null, "Do you want to continue your saved game?", 
+            int option = JOptionPane.showOptionDialog(null, "¿Quieres continuar con la partida guardada?", 
                             "Saved Game Found", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, question,null,null);
 
             switch(option) 
@@ -226,7 +226,7 @@ public class Game implements MouseListener, ActionListener, WindowListener
         JDialog dialog = new JDialog(gui, Dialog.ModalityType.DOCUMENT_MODAL);
         
         //------MESSAGE-----------//
-        JLabel message = new JLabel("Congratulations, you won the game!", SwingConstants.CENTER);
+        JLabel message = new JLabel("¡Felicidades, has ganado!", SwingConstants.CENTER);
                 
         //-----STATISTICS-----------//
         JPanel statistics = new JPanel();
@@ -236,28 +236,28 @@ public class Game implements MouseListener, ActionListener, WindowListener
         
         if (bTimes.isEmpty() || (bTimes.get(0).getTimeValue() > gui.getTimePassed()))
         {
-            statistics.add(new JLabel("    You have the fastest time for this difficulty level!    "));
+            statistics.add(new JLabel("    ¡Has logrado el tiempo más rápido para esta dificultad!    "));
         }
         
         score.addTime(gui.getTimePassed(), new Date(System.currentTimeMillis()));
                 
-        JLabel time = new JLabel("  Time:  " + Integer.toString(gui.getTimePassed()) + " seconds            Date:  " + new Date(System.currentTimeMillis()));
+        JLabel time = new JLabel("  Tiempo:  " + Integer.toString(gui.getTimePassed()) + " segundos            Fecha:  " + new Date(System.currentTimeMillis()));
         
         JLabel bestTime = new JLabel();
         
         
         if (bTimes.isEmpty())
         {
-            bestTime.setText("  Best Time:  ---                  Date:  ---");
+            bestTime.setText("  Mejor tiempo:  ---                  Fecha:  ---");
         }
         else
         {
-            bestTime.setText("  Best Time:  " + bTimes.get(0).getTimeValue() + " seconds            Date:  " + bTimes.get(0).getDateValue());
+            bestTime.setText("  Mejor tiempo:  " + bTimes.get(0).getTimeValue() + " segundos            Fecha:  " + bTimes.get(0).getDateValue());
         }
         
-        JLabel gPlayed = new JLabel("  Games Played:  " + score.getGamesPlayed());
-        JLabel gWon = new JLabel("  Games Won:  " + score.getGamesWon());
-        JLabel gPercentage = new JLabel("  Win Percentage:  " + score.getWinPercentage() + "%");
+        JLabel gPlayed = new JLabel("  Partidas jugadas:  " + score.getGamesPlayed());
+        JLabel gWon = new JLabel("  Victorias:  " + score.getGamesWon());
+        JLabel gPercentage = new JLabel("  Porcentaje de victoria:  " + score.getWinPercentage() + "%");
         
         statistics.add(time);
         statistics.add(bestTime);
@@ -273,8 +273,8 @@ public class Game implements MouseListener, ActionListener, WindowListener
         JPanel buttons = new JPanel();
         buttons.setLayout(new GridLayout(1,2,10,0));
         
-        JButton exit = new JButton("Exit");
-        JButton playAgain = new JButton("Play Again");
+        JButton exit = new JButton("Salir");
+        JButton playAgain = new JButton("Jugar de nuevo");
 
         
         exit.addActionListener((ActionEvent e) -> {
@@ -332,13 +332,13 @@ public class Game implements MouseListener, ActionListener, WindowListener
         JDialog dialog = new JDialog(gui, Dialog.ModalityType.DOCUMENT_MODAL);
         
         //------MESSAGE-----------//
-        JLabel message = new JLabel("Sorry, you lost this game. Better luck next time!", SwingConstants.CENTER);
+        JLabel message = new JLabel("Lo siento, has perdido. ¡Suerte la próxima vez!", SwingConstants.CENTER);
                 
         //-----STATISTICS-----------//
         JPanel statistics = new JPanel();
         statistics.setLayout(new GridLayout(5,1,0,10));
         
-        JLabel time = new JLabel("  Time:  " + Integer.toString(gui.getTimePassed()) + " seconds");
+        JLabel time = new JLabel("  Tiempo:  " + Integer.toString(gui.getTimePassed()) + " segundos");
         
         JLabel bestTime = new JLabel();
         
@@ -350,12 +350,12 @@ public class Game implements MouseListener, ActionListener, WindowListener
         }
         else
         {
-            bestTime.setText("  Best Time:  " + bTimes.get(0).getTimeValue() + " seconds            Date:  " + bTimes.get(0).getDateValue());
+            bestTime.setText("  Mejor tiempo:  " + bTimes.get(0).getTimeValue() + " segundos            Fecha:  " + bTimes.get(0).getDateValue());
         }
         
-        JLabel gPlayed = new JLabel("  Games Played:  " + score.getGamesPlayed());
-        JLabel gWon = new JLabel("  Games Won:  " + score.getGamesWon());
-        JLabel gPercentage = new JLabel("  Win Percentage:  " + score.getWinPercentage() + "%");
+        JLabel gPlayed = new JLabel("  Partidas jugadas:  " + score.getGamesPlayed());
+        JLabel gWon = new JLabel("  Victorias:  " + score.getGamesWon());
+        JLabel gPercentage = new JLabel("  Porcentaje de victoria:  " + score.getWinPercentage() + "%");
         
         statistics.add(time);
         statistics.add(bestTime);
@@ -371,9 +371,9 @@ public class Game implements MouseListener, ActionListener, WindowListener
         JPanel buttons = new JPanel();
         buttons.setLayout(new GridLayout(1,3,2,0));
         
-        JButton exit = new JButton("Exit");
-        JButton restart = new JButton("Restart");
-        JButton playAgain = new JButton("Play Again");
+        JButton exit = new JButton("Salir");
+        JButton restart = new JButton("Reiniciar");
+        JButton playAgain = new JButton("Jugar de nuevo");
 
         
         exit.addActionListener((ActionEvent e) -> {
@@ -414,7 +414,7 @@ public class Game implements MouseListener, ActionListener, WindowListener
             }
         );
         
-        dialog.setTitle("Game Lost");
+        dialog.setTitle("Partida perdida");
         dialog.add(c);
         dialog.pack();
         dialog.setLocationRelativeTo(gui);
@@ -448,7 +448,7 @@ public class Game implements MouseListener, ActionListener, WindowListener
             bestTimes.add(t);
         }
         
-        TitledBorder b = BorderFactory.createTitledBorder("Best Times");
+        TitledBorder b = BorderFactory.createTitledBorder("Mejores marcas");
         b.setTitleJustification(TitledBorder.LEFT);
 
         bestTimes.setBorder(b);
@@ -458,12 +458,12 @@ public class Game implements MouseListener, ActionListener, WindowListener
         
         statistics.setLayout(new GridLayout(6,1,0,10));        
         
-        JLabel gPlayed = new JLabel("  Games Played:  " + score.getGamesPlayed());
-        JLabel gWon = new JLabel("  Games Won:  " + score.getGamesWon());
-        JLabel gPercentage = new JLabel("  Win Percentage:  " + score.getWinPercentage() + "%");
-        JLabel lWin = new JLabel("  Longest Winning Streak:  " + score.getLongestWinningStreak());
-        JLabel lLose = new JLabel("  Longest Losing Streak:  " + score.getLongestLosingStreak());
-        JLabel currentStreak = new JLabel("  Current Streak:  " + score.getCurrentStreak());
+        JLabel gPlayed = new JLabel("  Partidas jugadas:  " + score.getGamesPlayed());
+        JLabel gWon = new JLabel("  Victorias:  " + score.getGamesWon());
+        JLabel gPercentage = new JLabel("  Porcentaje de victoria:  " + score.getWinPercentage() + "%");
+        JLabel lWin = new JLabel("  Mayor racha de victorias:  " + score.getLongestWinningStreak());
+        JLabel lLose = new JLabel("  Mayor racha de derrotas:  " + score.getLongestLosingStreak());
+        JLabel currentStreak = new JLabel("  Racha actual:  " + score.getCurrentStreak());
 
         
         statistics.add(gPlayed);
@@ -481,8 +481,8 @@ public class Game implements MouseListener, ActionListener, WindowListener
         JPanel buttons = new JPanel();
         buttons.setLayout(new GridLayout(1,2,10,0));
         
-        JButton close = new JButton("Close");
-        JButton reset = new JButton("Reset");
+        JButton close = new JButton("Salir");
+        JButton reset = new JButton("Reiniciar");
 
         
         close.addActionListener((ActionEvent e) -> {
@@ -491,8 +491,8 @@ public class Game implements MouseListener, ActionListener, WindowListener
         reset.addActionListener((ActionEvent e) -> {
             ImageIcon question = new ImageIcon(getClass().getResource("/resources/question.png"));      
 
-            int option = JOptionPane.showOptionDialog(null, "Do you want to reset all your statistics to zero?", 
-                            "Reset Statistics", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, question,null,null);
+            int option = JOptionPane.showOptionDialog(null, "¿Quieres reiniciar to estadísticas?", 
+                            "Reiniciar", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, question,null,null);
 
             switch(option) 
             {
@@ -525,7 +525,7 @@ public class Game implements MouseListener, ActionListener, WindowListener
         
         c.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         
-        dialog.setTitle("Minesweeper Statistics - Haris Muneer");
+        dialog.setTitle("Buscaminas Estádisticas - Haris Muneer");
         dialog.add(c);
         dialog.pack();
         dialog.setLocationRelativeTo(gui);
@@ -709,10 +709,10 @@ public class Game implements MouseListener, ActionListener, WindowListener
         {
             ImageIcon question = new ImageIcon(getClass().getResource("/resources/question.png"));      
 
-            Object[] options = {"Save","Don't Save","Cancel"};
+            Object[] options = {"Guardar","No guardar","Cancelar"};
 
-            int quit = JOptionPane.showOptionDialog(null, "What do you want to do with the game in progress?", 
-                            "New Game", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, question, options, options[2]);
+            int quit = JOptionPane.showOptionDialog(null, "¿Que quieres hacer con la partida en curso?", 
+                            "Nueva partida", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, question, options, options[2]);
 
             switch(quit) 
             {
@@ -726,9 +726,9 @@ public class Game implements MouseListener, ActionListener, WindowListener
                     JPanel panel = new JPanel();
                     panel.setLayout(new BorderLayout());
                     panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-                    panel.add(new JLabel("Saving.... Please Wait", SwingConstants.CENTER));
+                    panel.add(new JLabel("Guardando.... Porfavor espere", SwingConstants.CENTER));
                     dialog.add(panel);
-                    dialog.setTitle("Saving Game...");
+                    dialog.setTitle("Guardando partida...");
                     dialog.pack();
                     dialog.setLocationRelativeTo(gui);                    
                     dialog.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -773,16 +773,16 @@ public class Game implements MouseListener, ActionListener, WindowListener
     public void actionPerformed(ActionEvent e) {        
         JMenuItem menuItem = (JMenuItem) e.getSource();
 
-        if (menuItem.getName().equals("New Game"))
+        if (menuItem.getName().equals("Nueva partida"))
         {
             if (playing)
             {
                 ImageIcon question = new ImageIcon(getClass().getResource("/resources/question.png"));      
 
-                Object[] options = {"Quit and Start a New Game","Restart","Keep Playing"};
+                Object[] options = {"Salir y empezar una nueva partida","Reiniciar","Seguir jugando"};
                 
-                int startNew = JOptionPane.showOptionDialog(null, "What do you want to do with the game in progress?", 
-                                "New Game", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, question, options, options[2]);
+                int startNew = JOptionPane.showOptionDialog(null, "¿Que quieres hacer con la partida en curso?", 
+                                "Nueva partida", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, question, options, options[2]);
 
                 switch(startNew) 
                 {
@@ -805,7 +805,7 @@ public class Game implements MouseListener, ActionListener, WindowListener
             }
         }
         
-        else if (menuItem.getName().equals("Exit"))
+        else if (menuItem.getName().equals("Salir"))
         {
             windowClosing(null);
         }
