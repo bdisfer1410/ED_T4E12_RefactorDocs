@@ -27,9 +27,9 @@ import minesweeper.Score.Time;
 // This is the main controller class
 public class Game implements MouseListener, ActionListener, WindowListener
 {
-    private static int DEFAULT_MINES = 10;
-    private static int DEFAULT_ROWS = 9;
-    private static int DEFAULT_COLS = 9;
+    private static int DEFAULT_MINES = 3;
+    private static int DEFAULT_ROWS = 5;
+    private static int DEFAULT_COLS = 5;
 
     public static String dbPath;
     // "playing" indicates whether a game is running (true) or not (false).
@@ -54,7 +54,7 @@ public class Game implements MouseListener, ActionListener, WindowListener
         }
         catch (URISyntaxException ex) 
         {
-            System.out.println("Error cargando el archivo de base de datos.");
+            System.out.println("Error al cargar el archivo de base de datos.");
         }
 
         dbPath =   "jdbc:ucanaccess://" + p;
@@ -491,7 +491,7 @@ public class Game implements MouseListener, ActionListener, WindowListener
         reset.addActionListener((ActionEvent e) -> {
             ImageIcon question = new ImageIcon(getClass().getResource("/resources/question.png"));      
 
-            int option = JOptionPane.showOptionDialog(null, "¿Quieres reiniciar to estadísticas?", 
+            int option = JOptionPane.showOptionDialog(null, "¿Quieres reiniciar las estadísticas?", 
                             "Reiniciar", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, question,null,null);
 
             switch(option) 
